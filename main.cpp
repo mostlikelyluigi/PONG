@@ -15,13 +15,13 @@ using namespace std;
 
 //Define the sfx path
 #define HIT_SOUND_FILEPATH "Music/PongSound.wav"
+#define BACKGROUND_THEME "Music/backgroundTheme.ogg"
 
 int main()
 {
     //Create a window of 1024x768 pixels in size
     int windowWidth = 1024;
     int windowHeight = 768;
-
 
     //Loading the soundbuffer for the sfx
     sf::SoundBuffer _hitSoundBuffer;
@@ -38,9 +38,9 @@ int main()
 
     //PLAY BACKGROUND MUSIC
     sf::Music backgroundTheme;
-    //test
+    
    //open the music file
-    if (!backgroundTheme.openFromFile("Music/backgroundTheme.ogg"))
+    if (!backgroundTheme.openFromFile(BACKGROUND_THEME))
     {
         std::cout << "Error importing the background theme file" << std::endl;
     }
@@ -52,6 +52,8 @@ int main()
 
     //Make the title of the window "PONG"
     RenderWindow window(VideoMode(windowWidth, windowHeight), "PONG");
+    window.setSize(Vector2u(windowWidth, windowHeight));
+
 
     int score = 0;
     int lives = 3;
@@ -109,7 +111,7 @@ int main()
 
         //Frame update
 
-    //Handle ball hitting hte bottom of the screen
+    //Handle ball hitting the bottom of the screen
         if (ball.getPosition().top > windowHeight)
         {
             //reverse the direction of the ball
@@ -152,6 +154,22 @@ int main()
             _hitSound.play(); //Play the sfx sound when the ball hits the bat
         }
 
+        //Handle the bat hitting the left side of the screen (Screen collision)
+        if (bat.getPosition().left < 0.f)
+        {
+            bat.reboundSideL();
+        }
+        
+        //Handle the bat hitting the right side of the screen (Screen collision)
+        if (bat.getPosition().left + 10 > windowWidth)
+        {
+            bat.reboundSideR();
+        }
+        
+            
+       
+
+
         ball.update();
         bat.update();
 
@@ -159,6 +177,9 @@ int main()
         std::stringstream ss;
         ss << "Score:" << score << "     Lives:" << lives;
         hud.setString(ss.str());
+
+
+    
 
 
         //Draw the frame

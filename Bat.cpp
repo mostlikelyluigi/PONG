@@ -7,7 +7,7 @@ Bat::Bat(float startX, float startY)
 	position.x = startX;
 	position.y = startY;
 
-	batShape.setSize(sf::Vector2f(50, 5));
+	batShape.setSize(sf::Vector2f(100, 5));
 	batShape.setPosition(position);
 }
 
@@ -36,4 +36,12 @@ void Bat::update()
 	batShape.setPosition(position);
 }
 
+void Bat::reboundSideR()
+{
+	batShape.setPosition(1024 - batShape.getGlobalBounds().width, batShape.getPosition().y);
+}
 
+void Bat::reboundSideL()
+{
+	batShape.setPosition(0.f, batShape.getPosition().y);
+}

@@ -19,11 +19,16 @@ public:
 	FloatRect getPosition(); //returns FloatRect, the 4 points which define a rectangle
 
 	RectangleShape getShape(); //this just returns a rectangle shape :D
-	
 
 	void moveLeft();
 
 	void moveRight();
 
+	void reboundSideR();
+
+	void reboundSideL();
+
 	void update();
+
+
 };
