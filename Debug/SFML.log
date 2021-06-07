@@ -1,5 +1,5 @@
 ﻿  main.cpp
-C:\Users\Luigi\Desktop\Personal Projects\SFML\main.cpp(26,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luigi\Desktop\Personal Projects\SFML\main.cpp(26,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Luigi\Desktop\Personal Projects\SFML\main.cpp(29,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luigi\Desktop\Personal Projects\SFML\main.cpp(60,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luigi\Desktop\Personal Projects\SFML\main.cpp(60,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Luigi\Desktop\Personal Projects\SFML\main.cpp(63,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SFML.vcxproj -> C:\Users\Luigi\Desktop\Personal Projects\SFML\Debug\SFML.exe
