@@ -6,28 +6,22 @@ using namespace sf;
 class Ball
 {
 private:
-	Vector2f position;
+    Vector2f position;
+    RectangleShape ballShape;
 
-	//A RectangleShape object called ref
-	RectangleShape ballShape;
-
-	float xVelocity = .2f;
-	float yVelocity = .2f;
+    float xVelocity = .2f;
+    float yVelocity = .2f;
 
 public:
-	Ball(float startX, float startY);
+    Ball(float startX, float startY);
+    FloatRect getPosition();
+    RectangleShape getShape();
+    float getYVelocity();
+    void reboundSideLeft();
+    void reboundSideRight();
+    void reboundTopOrBottom();
+    void reboundBat();
 
-	FloatRect getPosition();
+    void update();
 
-	RectangleShape getShape();
-
-	float getXVelocity();
-
-	void reboundSides(); //What happens when ball hits the side of the screen?
-
-	void reboundBatOrTop(); //What happens when ball hits the bat or top of the screen?
-
-	void hitBottom(); //What happens when hits the bottom of the screen?
-
-	void update();
 };

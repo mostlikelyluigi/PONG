@@ -1,54 +1,62 @@
 #include "Ball.h"
 
-//This is the constructor and it is called when the object is created
+//Setting the size of the ball and its starting position
 Ball::Ball(float startX, float startY)
 {
-	position.x = startX;
-	position.y = startY;
+    position.x = startX;
+    position.y = startY;
 
-	ballShape.setSize(sf::Vector2f(10, 10));
-	ballShape.setPosition(position);
+    ballShape.setSize(sf::Vector2f(10, 10));
+    ballShape.setPosition(position);
 }
 
+//Gets the coordinates of the ball
 FloatRect Ball::getPosition()
 {
-	return ballShape.getGlobalBounds();
+    return ballShape.getGlobalBounds();
 }
-
+//This just returns the ball
 RectangleShape Ball::getShape()
 {
-	return ballShape; //Returns copy of RectangleShape to be drawn on screen
+    return ballShape;
+}
+float Ball::getYVelocity()
+{
+    return yVelocity;
 }
 
-float Ball::getXVelocity()
+//Did the ball hit the top or bottom?
+void Ball::reboundTopOrBottom()
 {
-	return xVelocity;//Return stored value of xVelocity
+    yVelocity = -yVelocity;
 }
 
-void Ball::reboundSides()
+//Did the ball hit the left side?
+void Ball::reboundSideLeft()
 {
-	xVelocity = -xVelocity; //When side of screen is hit, change velocity to opposite direction
+    position.y = 250;
+    position.x = 500;
+
+}
+//Did the ball hit the right side?
+void Ball::reboundSideRight()
+{
+    position.y = 250;
+    position.x = 500;
 }
 
-void Ball::reboundBatOrTop()
+//Did the ball hit the bat?
+void Ball::reboundBat()
 {
-	position.y -= (yVelocity * 30); //This prevents the ball getting stuck in the Bat! :D
-	yVelocity = -yVelocity; //Just change velocity to opposite direction
-}
+    position.x -= (xVelocity * 30);
+    xVelocity = -xVelocity;
 
-void Ball::hitBottom()
-{
-	//Position the ball to the top-middle of the screen
-	position.y = 1; 
-	position.x = 500;
 }
 
 void Ball::update()
 {
-	// Update the ball position variables
-	position.y += yVelocity;
-	position.x += xVelocity;
+    position.y += yVelocity;
+    position.x += xVelocity;
 
-	// Move the ball and the bat
-	ballShape.setPosition(position);
+    ballShape.setPosition(position);
 }
